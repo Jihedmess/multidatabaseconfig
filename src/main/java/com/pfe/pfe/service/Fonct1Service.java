@@ -1,0 +1,46 @@
+package com.pfe.pfe.service;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.Optional;
+
+import javax.swing.tree.RowMapper;
+import javax.swing.tree.TreePath;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
+
+
+import com.pfe.pfe.bean.Fonctionnalite;
+import com.pfe.pfe.mapper.FonctionnaliteMapper;
+
+
+@Repository
+public class Fonct1Service {
+@Qualifier("jdbcFonct1Service")
+@Autowired
+JdbcTemplate jdbcTemplate;
+
+public List < Fonctionnalite > findAll() {
+    return jdbcTemplate.query("select * from fonctionnalite", new FonctionnaliteMapper());
+}
+
+
+
+
+
+public int insert(Fonctionnalite f) {
+    return jdbcTemplate.update("insert into fonctionnalite (id, name, desscription, fileActivation, filaDesactivation, fileChek) " + "values(?, ?, ?, ?, ?, ?)",
+        new Object[] {
+            f.getId(), f.getName(), f.getDesscription(),f.getFileActivation(),f.getFilaDesactivation(),f.getFileChek()
+        });
+}
+    
+}
+
+
+
