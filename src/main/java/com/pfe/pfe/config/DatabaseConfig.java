@@ -35,6 +35,12 @@ public class DatabaseConfig {
 		return DataSourceBuilder.create().build();
 		
 	}
+	@Bean(name="dbFonct3Service")
+	@ConfigurationProperties(prefix="spring.datasource.test3")
+	public DataSource createFonct3ServiceDataSource() {
+		return DataSourceBuilder.create().build();
+		
+	}
 	
 	
 	@Bean(name="jdbcFonct1Service")
@@ -48,5 +54,10 @@ public class DatabaseConfig {
 		return new JdbcTemplate(fonctService2);
 	}
 	
+	@Bean(name="jdbcFonct3Service")
+	@Autowired
+	public JdbcTemplate createJdbcTemplateFonct3Service(@Qualifier("dbFonct3Service") DataSource fonctService3) {
+		return new JdbcTemplate(fonctService3);
+	}
 
 }
