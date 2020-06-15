@@ -13,9 +13,9 @@ public class FonctionnaliteMapper implements RowMapper<Fonctionnalite> {
       student.setId(rs.getInt("id"));
       student.setName(rs.getString("name"));
       student.setDesscription(rs.getString("desscription"));
-      student.setFileActivation(rs.getString("fileActivation"));
-      student.setFilaDesactivation(rs.getString("filaDesactivation"));
-      student.setFileChek(rs.getString("fileChek"));
+      student.setFileActivation(rs.getString("file_activation"));
+      student.setFilaDesactivation(rs.getString("fila_desactivation"));
+      student.setFileChek(rs.getString("file_chek"));
       return student;
    }
 }
